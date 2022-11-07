@@ -1,0 +1,40 @@
+<app-naved></app-naved>
+<h1 id="asis" class="text-center">Formulario de Asistencia</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-4">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action" *ngFor="let estudi of
+          Estudiantesarray" (click)="openForEdit(estudi)" [class.active]="estudi == selectedEstudiante"> <span class="badge rounded-pill text-bg-dark">{{estudi.id}}
+          </span>
+          {{ estudi.name}} - {{ estudi.lugarr}}
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <div class="card mt-4">
+        <div class="card-body">
+          <div class="card-title">
+            Insertar Nuevo Estudiante
+          </div>
+          <div class="form-group">
+            <input [(ngModel)]="selectedEstudiante.name" type="text"
+              placeholder="Inserte su nombre" class="form-control">
+          </div>
+          <br>
+          <div class="form-group">
+            <input [(ngModel)]="selectedEstudiante.lugarr" type="text"
+              placeholder="Inserte su lugar de residencia" class="form-control">
+          </div>
+          <br>
+          <button (click)="addorEdit()" class="btn btn-primary">Guardar</button>
+          
+     <button *ngIf="selectedEstudiante.id !== 0" class="btn btn-danger" (click)="eliminar()">Eliminar</button> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <app-app-des></app-app-des>
+  <router-outlet></router-outlet>
+
